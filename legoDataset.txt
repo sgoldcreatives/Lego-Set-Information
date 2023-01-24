@@ -1,0 +1,7 @@
+75345 19.99 119 4
+75313 849.99 6785 9
+75337 139.99 1082 8
+75347 64.99 625 3
+75192 849.99 7541 10
+
+Set Number , Retail Price, Piece Count, Minifigure Count
