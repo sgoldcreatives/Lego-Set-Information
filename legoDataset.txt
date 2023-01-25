@@ -4,4 +4,4 @@
 75347 64.99 625 3 LEGO Star Wars TIE Bomber
 75192 849.99 7541 10 LEGO Star Wars Millennium Falcon
 
-Set Number , Retail Price, Piece Count, Minifigure Count
+Set Number , Retail Price, Piece Count, Minifigure Count, Set name
