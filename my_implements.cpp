@@ -25,13 +25,18 @@ void readFile(std::fstream& f)
 }
 
 void openFile(std::string fileName) {
-
 	fstream file;
 	file.open(fileName);
+
 
 	if (file.is_open()) {
 		readFile(file);
 		closeFile(file);
+
+		fstream file;
+		file.open(fileName);
+		createFile(file);
+
 	}
 	else {
 		cout << "Error: File not found!" << endl;
@@ -41,15 +46,16 @@ void openFile(std::string fileName) {
 }
 
 void closeFile(std::fstream& fClose) {
+
 	fClose.close();
 	if (fClose.is_open()) {
 		cout << endl << "Error: File not closed";
 	}
 }
 
-void fileData(std::fstream& fin, legoSet& Lego, int &numList) {
+void fileData(std::fstream& fin, legoSet& Lego, int& numList) {
 
-	 // List number
+	// List number
 	cout << endl << endl << "List #" << numList << endl
 		<< "Set name:" << Lego.setName << endl
 		<< "Set number: " << Lego.setNum << endl
@@ -59,3 +65,47 @@ void fileData(std::fstream& fin, legoSet& Lego, int &numList) {
 		<< "Total price per piece: $" << setprecision(Lego.get_deciCount()) << fixed << static_cast<float>(Lego.pieces) / Lego.price << endl;
 	numList++;
 }
+
+void createFile(std::fstream& fileIN) {
+	legoSet Lego; //Call class
+	int listNum = 1; // List number
+	char choice;
+	std::string ofileName;
+
+	
+	cout << endl << "Save file?(Y/N)" << endl
+		<< "Choice: ";
+	cin >> choice;
+
+
+	if (choice == 'N' or choice == 'n') {
+
+	}
+
+	cout << "Please name file: ";
+	cin >> ofileName;
+	ofstream outFile;
+
+	outFile.open(ofileName += ".txt", ios::out);
+
+	while (fileIN >> Lego.setNum >> Lego.price >> Lego.pieces >> Lego.minifigs) //Loop to read each data value
+	{
+		std::getline(fileIN, Lego.setName); //additional function to read set's names
+
+		outFile << "list #" << listNum << endl
+			<< "set name:" << Lego.setName << endl
+			<< "set number: " << Lego.setNum << endl
+			<< "retail price (usd): $" << Lego.price << endl
+			<< "minifig count: " << Lego.minifigs << endl
+			<< "total piece count: " << Lego.pieces << endl
+			<< "total price per piece: $" << setprecision(Lego.get_deciCount()) << fixed << static_cast<float>(Lego.pieces) / Lego.price << endl;
+		listNum++;
+	}
+
+	outFile.close();
+	cout << "File saved! ";
+}
+
+
+
+

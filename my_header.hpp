@@ -26,6 +26,7 @@ public:
 
 };
 
+void createFile(std::fstream& fileIN);
 void fileData(std::fstream& fin, legoSet& Lego, int& numList); //Formats data of txt file
 
 #endif
