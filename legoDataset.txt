@@ -1,7 +1,7 @@
-75345 19.99 119 4
-75313 849.99 6785 9
-75337 139.99 1082 8
-75347 64.99 625 3
-75192 849.99 7541 10
+75345 19.99 119 4 LEGO Star Wars 501st Clone Troopers Battle Pack
+75313 849.99 6785 9 LEGO Star Wars AT-AT
+75337 139.99 1082 8 LEGO AT-TE Walker
+75347 64.99 625 3 LEGO Star Wars TIE Bomber
+75192 849.99 7541 10 LEGO Star Wars Millennium Falcon
 
 Set Number , Retail Price, Piece Count, Minifigure Count

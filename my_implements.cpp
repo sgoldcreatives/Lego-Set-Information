@@ -11,19 +11,16 @@ void readFile(std::fstream& f)
 	legoSet L; //Call class
 	int listNum = 1; // List number
 
+	if (f.peek() == EOF) {
+		cout << "Error: File is empty!";
+	}
+
 	while (f >> L.setNum >> L.price >> L.pieces >> L.minifigs) //Loop to read each data value
 	{
-		/*Reads the variables in the order that they are written and
-		outputs small computational table with all important
-		information. Piece count is price per piece and needs to be 
-		static casted in order to get amount in usd.*/
+		std::getline(f, L.setName); //additional function to read set's names
 
-		cout << endl << endl << "List #" << listNum << endl << "Set number: " << L.setNum << endl
-			<< "Retail price (USD): $" << L.price << endl
-			<< "Minifig count: " << L.minifigs << endl
-			<< "Total piece count: " << L.pieces << endl
-			<< "Total price per piece: $" << setprecision(L.get_deciCount()) << fixed << static_cast<float>(L.pieces) / L.price << endl;
-		listNum++;
+		fileData(f, L, listNum);
+
 	}
 }
 
@@ -34,11 +31,31 @@ void openFile(std::string fileName) {
 
 	if (file.is_open()) {
 		readFile(file);
+		closeFile(file);
 	}
 	else {
 		cout << "Error: File not found!" << endl;
-
 	}
 
 
+}
+
+void closeFile(std::fstream& fClose) {
+	fClose.close();
+	if (fClose.is_open()) {
+		cout << endl << "Error: File not closed";
+	}
+}
+
+void fileData(std::fstream& fin, legoSet& Lego, int &numList) {
+
+	 // List number
+	cout << endl << endl << "List #" << numList << endl
+		<< "Set name:" << Lego.setName << endl
+		<< "Set number: " << Lego.setNum << endl
+		<< "Retail price (USD): $" << Lego.price << endl
+		<< "Minifig count: " << Lego.minifigs << endl
+		<< "Total piece count: " << Lego.pieces << endl
+		<< "Total price per piece: $" << setprecision(Lego.get_deciCount()) << fixed << static_cast<float>(Lego.pieces) / Lego.price << endl;
+	numList++;
 }

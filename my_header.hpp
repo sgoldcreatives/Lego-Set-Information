@@ -7,6 +7,8 @@ void openFile(std::string);
 
 void readFile(std::fstream& f);
 
+void closeFile(std::fstream& fClose);
+
 class legoSet
 {
 	const int deciCount = 2;
@@ -16,6 +18,7 @@ public:
 	float price = 0;
 	int pieces = 0;
 	int minifigs = 0;
+	std::string setName;
 
 	int get_deciCount() {
 		return deciCount; //Getter to use for function readFile
@@ -23,6 +26,7 @@ public:
 
 };
 
+void fileData(std::fstream& fin, legoSet& Lego, int& numList); //Formats data of txt file
 
 #endif
 
